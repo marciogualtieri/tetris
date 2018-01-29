@@ -17,7 +17,7 @@ class Board:
         rendered_canvas = ""
         for i in range(0, self.height):
             rendered_canvas += self.__render_row__(self.canvas[i])
-        rendered_canvas += self.__render_bottom()
+        rendered_canvas += self.__render_bottom__()
         return rendered_canvas
 
     def place_piece(self, piece):
@@ -32,7 +32,7 @@ class Board:
     def __render_row__(self, row):
         return self.__class__.FILLED_PIXEL + "".join(row) + self.__class__.FILLED_PIXEL + "\n"
 
-    def __render_bottom(self):
+    def __render_bottom__(self):
         return self.__class__.FILLED_PIXEL * (self.weight + 2)
 
     def __is_valid_placement__(self, piece):
