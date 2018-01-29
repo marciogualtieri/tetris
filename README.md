@@ -56,38 +56,21 @@ The following class diagram is the result of TDD design. Rather than starting th
 <details>
 <summary></summary>
 custom_mark1
-    /**
-     *@opt all
-     *@composed 1 Has 2 Board
-     */
-    class Game {
-        public void current_state();
-        public void move_piece_left();
-        public void move_piece_right();
-        public void rotate_piece_left();
-        public void rotate_piece_right();
-        public void move_piece_down();
-    }
-    /**
-    *@opt all
-    *@composed 1 Has 1 Piece
-    */
-    class Board {
-        public void render();
-        public void place_piece(piece);
-    }
-    /**
-    *@opt all
-    */
-    class Piece {
-        Piece(String shape, Tuple coordinates);
-        public void rotate_right();
-        public void rotate_left();
-        public void move_right();
-        public void move_left();
-        public void move_down();
-        public void rollback();
-    }
+  digraph G {
+    aize ="4,4";
+    main [shape=box];
+    main -> parse [weight=8];
+    parse -> execute;
+    main -> init [style=dotted];
+    main -> cleanup;
+    execute -> { make_string; printf};
+    init -> make_string;
+    edge [color=red];
+    main -> printf [style=bold,label="100 times"];
+    make_string [label="make a string"];
+    node [shape=box,style=filled,color=".7 .3 1.0"];
+    execute -> compare;
+  }
 custom_mark1
 </details>
 
