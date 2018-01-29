@@ -5,8 +5,8 @@ from copy import deepcopy
 
 
 class EndOfGameException(Exception):
-    def __init__(self,*args,**kwargs):
-        Exception.__init__(self,*args,**kwargs)
+    def __init__(self, *args, **kwargs):
+        Exception.__init__(self, *args, **kwargs)
 
 
 class Game:
@@ -22,36 +22,41 @@ class Game:
         return self.current_board.render()
 
     def move_piece_left(self):
-        self.__update_board_with_action__(self.piece.move_left)
+        self.__update_board_with_action__(action=self.piece.move_left,
+                                          recovery_actions=[self.piece.rollback])
         self.move_piece_down()
 
     def move_piece_right(self):
-        self.__update_board_with_action__(self.piece.move_right)
+        self.__update_board_with_action__(action=self.piece.move_right,
+                                          recovery_actions=[self.piece.rollback])
         self.move_piece_down()
 
     def rotate_piece_left(self):
-        self.__update_board_with_action__(self.piece.rotate_left)
+        self.__update_board_with_action__(action=self.piece.rotate_left,
+                                          recovery_actions=[self.piece.rollback])
         self.move_piece_down()
 
     def rotate_piece_right(self):
-        self.__update_board_with_action__(self.piece.rotate_right)
+        self.__update_board_with_action__(action=self.piece.rotate_right,
+                                          recovery_actions=[self.piece.rollback])
         self.move_piece_down()
 
     def move_piece_down(self):
-        self.__update_board_with_action__(self.piece.move_down)
+        self.__update_board_with_action__(action=self.piece.move_down,
+                                          recovery_actions=[self.piece.rollback, self.reset_board])
 
-    def __update_board_with_action__(self, action):
-        piece_original_coordinates = self.piece.coordinates
+    def __update_board_with_action__(self, action, recovery_actions):
         action()
         attempted_board = deepcopy(self.background_board)
         try:
             attempted_board.place_piece(self.piece)
             self.current_board = attempted_board
         except InvalidPlacementException:
-            self.piece.coordinates = piece_original_coordinates
-            if action.__name__ == "move_down":
-                self.background_board = deepcopy(self.current_board)
-                self.__create_new_piece__()
+            [recovery_action() for recovery_action in recovery_actions]
+
+    def reset_board(self):
+        self.background_board = deepcopy(self.current_board)
+        self.__create_new_piece__()
 
     def __create_new_piece__(self):
         self.piece = choice(ALL_PIECES)()

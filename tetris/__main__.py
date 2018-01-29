@@ -1,5 +1,7 @@
 from tetris.entities.game import Game, EndOfGameException
-import sys, tty, termios
+import sys
+import tty
+import termios
 
 
 def getchar():
@@ -18,8 +20,6 @@ def clear_screen():
 
 
 def main():
-
-    print "Welcome to Tetris!\n\n"
 
     game = Game()
     clear_screen()
@@ -40,7 +40,7 @@ def main():
                 clear_screen()
                 print game.current_board.render()
             except EndOfGameException:
-                print "Game Over, Man. Game Over."
+                print "Game Over, Man! Game Over!"
                 exit()
 
 

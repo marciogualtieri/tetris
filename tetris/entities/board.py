@@ -1,6 +1,6 @@
 class InvalidPlacementException(Exception):
-    def __init__(self,*args,**kwargs):
-        Exception.__init__(self,*args,**kwargs)
+    def __init__(self, piece):
+        Exception.__init__(self, "Can't move piece to coordinates (%d, %d)." % piece.coordinates)
 
 
 class Board:
@@ -27,7 +27,7 @@ class Board:
                     if piece.canvas[i][j] == self.__class__.FILLED_PIXEL:
                         self.canvas[piece.coordinates[0] + i][piece.coordinates[1] + j] = piece.canvas[i][j]
         else:
-            raise InvalidPlacementException("Can't place piece on coordinates (%d, %d)." % piece.coordinates)
+            raise InvalidPlacementException(piece)
 
     def __render_row(self, row):
         return self.__class__.FILLED_PIXEL + "".join(row) + self.__class__.FILLED_PIXEL + "\n"
