@@ -64,4 +64,4 @@ class TestBoard(TestCase):
         with self.assertRaises(InvalidPlacementException) as context:
             self.board.place_piece(l_piece((2, 3)))
             self.board.place_piece(l_piece((2, 3)))
-        self.assertTrue("Can't place piece on coordinates (2, 3)." in context.exception)
+        self.assertTrue("Can't move piece to coordinates (2, 3)." in context.exception)
