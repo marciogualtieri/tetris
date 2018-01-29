@@ -3,7 +3,8 @@
 ## Table of Contents
 
 ### Overview
-### Requirements
+### Design
+### Dependencies
 ### Running Tests
 ### Running the App
 ### Installing the App
@@ -46,7 +47,50 @@ Updating the specs with these changes, the new list of actions is:
 * x: move piece down
 * e: exit
 
-## Requirements
+## Design
+
+The following class diagram is the result of TDD design. Rather than starting the coding process after having the class diagram prior, the following class diagram is the final result of an iterative process.
+
+![](https://g.gravizo.com/source/svg/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
+
+<!---
+custom_mark1
+    /**
+     *@opt all
+     *@composed 1 Has 2 Board
+     */
+    class Game {
+        public void current_state();
+        public void move_piece_left();
+        public void move_piece_right();
+        public void rotate_piece_left();
+        public void rotate_piece_right();
+        public void move_piece_down();
+    }
+    /**
+    *@opt all
+    *@composed 1 Has 1 Piece
+    */
+    class Board {
+        public void render();
+        public void place_piece(piece);
+    }
+    /**
+    *@opt all
+    */
+    class Piece {
+        Piece(String shape, Tuple coordinates);
+        public void rotate_right();
+        public void rotate_left();
+        public void move_right();
+        public void move_left();
+        public void move_down();
+        public void rollback();
+    }
+custom_mark1
+-->
+
+## Dependencies
 
 This app has been developed with Python version 2.7 and the following packages:
 

@@ -37,7 +37,7 @@ def main():
     welcome_player()
     getchar()
     clear_screen()
-    print game.current_board.render()
+    print game.current_state()
 
     actions = {'a': game.move_piece_left,
                'd': game.move_piece_right,
