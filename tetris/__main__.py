@@ -19,9 +19,23 @@ def clear_screen():
     print "\033[H\033[J"
 
 
+def welcome_player():
+    print ("\n\nWELCOME TO TETRIS!\n\n"
+           "INSTRUCTIONS:\n\n"
+           "    <A> - MOVE PIECE LEFT\n"
+           "    <D> - MOVE PIECE RIGHT\n"
+           "    <W> - ROTATE PIECE CLOCKWISE\n"
+           "    <S> - ROTATE PIECE COUNTERCLOCKWISE\n"
+           "    <X> - MOVE PIECE DOWN\n"
+           "    <E> - EXIT THE GAME\n\n"
+           "*** PRESS ANY KEY TO CONTINUE... ***")
+
+
 def main():
 
     game = Game()
+    welcome_player()
+    getchar()
     clear_screen()
     print game.current_board.render()
 
@@ -40,7 +54,7 @@ def main():
                 clear_screen()
                 print game.current_board.render()
             except EndOfGameException:
-                print "Game Over, Man! Game Over!"
+                print "\nGAME OVER, MAN! GAME OVER!\n"
                 exit()
 
 
