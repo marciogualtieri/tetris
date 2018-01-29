@@ -19,10 +19,12 @@ It's my understanding that the specs are missing one action: move down.
 
 Given the actions listed in the specs:
 
-* a (return): move piece left
-* d (return): move piece right
-* w (return): rotate piece counter clockwise
-* s (return): rotate piece clockwise
+| Key        | Function                       |
+| ---------- |:------------------------------ |
+| a (return) |  move piece left               |
+| d (return) | move piece right               |
+| w (return) | rotate piece counter clockwise |
+| s (return) | rotate piece clockwise         |
 
 And also the following sentence, also from the same specs:
 
@@ -40,18 +42,20 @@ I felt that this kills the dynamic of the game... It wouldn't feel like Tetris t
 
 Updating the specs with these changes, the new list of actions is:
 
-* a: move piece left
-* d: move piece right
-* w: rotate piece counter clockwise
-* s: rotate piece clockwise
-* x: move piece down
-* e: exit
+| Key | Function                       |
+| --- |:------------------------------ |
+| a   |  move piece left               |
+| d   | move piece right               |
+| w   | rotate piece counter clockwise |
+| s   | rotate piece clockwise         |
+| x   | move piece down                |
+| e   | exit                           |
 
 ## Design
 
 The following class diagram is the result of TDD design. Rather than starting the coding process after having the class diagram prior, the following class diagram is the final result of an iterative process.
 
-![](https://g.gravizo.com/source/custom_mark5?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
+![](https://g.gravizo.com/source/custom_mark5?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fmaster%2FREADME.md)
 
 <details>
 <summary></summary>
