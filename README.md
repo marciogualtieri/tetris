@@ -56,21 +56,50 @@ The following class diagram is the result of TDD design. Rather than starting th
 <details>
 <summary></summary>
 custom_mark1
-  digraph G {
-    aize ="4,4";
-    main [shape=box];
-    main -> parse [weight=8];
-    parse -> execute;
-    main -> init [style=dotted];
-    main -> cleanup;
-    execute -> { make_string; printf};
-    init -> make_string;
-    edge [color=red];
-    main -> printf [style=bold,label="100 times"];
-    make_string [label="make a string"];
-    node [shape=box,style=filled,color=".7 .3 1.0"];
-    execute -> compare;
-  }
+    /**
+     *@opt all
+     *@composed 1 Has n Purchase
+     */
+    class Basket {
+        public void purchase(Product product, float units);
+        public Collection purchases;
+    }
+    /**
+    *@opt all
+    *@composed 1 Has 1 Product
+    */
+    class Purchase {
+        public Product product;
+        public decimal units;
+        public decimal checkout();
+        private decimal __discount__();
+    }
+    /**
+    *@opt all
+    *@composed 1 Has 1 PromotionalOffer
+    */
+    class Product {
+        public decimal price_per_unit;
+        public PromotionalOffer promotional_offer;
+    }
+    /**
+    *@opt all
+    */
+    interface PromotionalOffer {
+        public decimal discount(Purchase purchase);
+    }
+    /**
+    *@opt all
+    */
+    class HalfPriceOffer implements PromotionalOffer {}
+    /**
+    *@opt all
+    */
+    class XForThePriceOfYOffer implements PromotionalOffer {}
+    /**
+    *@opt all
+    */
+    class XForPrice implements PromotionalOffer {}
 custom_mark1
 </details>
 
