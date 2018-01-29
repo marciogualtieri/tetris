@@ -11,12 +11,10 @@ class EndOfGameException(Exception):
 
 class Game:
 
-    def __init__(self, first_piece=choice(ALL_PIECES)()):
+    def __init__(self, first_piece=None):
         self.background_board = Board(20, 20)
         self.current_board = Board(self.background_board.height, self.background_board.weight)
-        self.piece = first_piece
-        self.piece.coordinates = (0, self.current_board.weight / 2)
-        self.current_board.place_piece(self.piece)
+        self.__place_new_piece__(first_piece)
 
     def current_state(self):
         return self.current_board.render()
@@ -56,10 +54,10 @@ class Game:
 
     def reset_board(self):
         self.background_board = deepcopy(self.current_board)
-        self.__create_new_piece__()
+        self.__place_new_piece__()
 
-    def __create_new_piece__(self):
-        self.piece = choice(ALL_PIECES)()
+    def __place_new_piece__(self, piece=None):
+        self.piece = choice(ALL_PIECES)() if piece is None else piece
         self.piece.coordinates = (0, self.current_board.weight / 2)
         try:
             self.current_board.place_piece(self.piece)

@@ -51,14 +51,15 @@ Updating the specs with these changes, the new list of actions is:
 
 The following class diagram is the result of TDD design. Rather than starting the coding process after having the class diagram prior, the following class diagram is the final result of an iterative process.
 
-![](https://g.gravizo.com/source/custom_mark3?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
+![](https://g.gravizo.com/source/custom_mark4?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
 
 <details>
 <summary></summary>
-custom_mark3
+custom_mark4
     /**
      *@opt all
      *@composed 1 Has 2 Board
+     *@composed 1 Has 1 EndOfGameException
      */
     class Game {
         public void current_state();
@@ -71,6 +72,7 @@ custom_mark3
     /**
     *@opt all
     *@composed 1 Has 1 Piece
+    *@composed 1 Has 1 InvalidPlacementException
     */
     class Board {
         public void render();
@@ -87,7 +89,9 @@ custom_mark3
         public void move_down();
         public void rollback();
     }
-custom_mark3
+    class InvalidPlacementException {}
+    class EndOfGameException {}
+custom_mark4
 </details>
 
 ## Dependencies
