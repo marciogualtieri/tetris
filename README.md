@@ -51,7 +51,7 @@ Updating the specs with these changes, the new list of actions is:
 
 The following class diagram is the result of TDD design. Rather than starting the coding process after having the class diagram prior, the following class diagram is the final result of an iterative process.
 
-![](https://g.gravizo.com/source/svg/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
+![](https://g.gravizo.com/source/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
 
 <details>
 <summary></summary>
