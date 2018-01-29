@@ -53,7 +53,8 @@ The following class diagram is the result of TDD design. Rather than starting th
 
 ![](https://g.gravizo.com/source/svg/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
 
-<!---
+<details>
+<summary></summary>
 custom_mark1
     /**
      *@opt all
@@ -88,7 +89,7 @@ custom_mark1
         public void rollback();
     }
 custom_mark1
--->
+</details>
 
 ## Dependencies
 
