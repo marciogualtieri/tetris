@@ -51,56 +51,43 @@ Updating the specs with these changes, the new list of actions is:
 
 The following class diagram is the result of TDD design. Rather than starting the coding process after having the class diagram prior, the following class diagram is the final result of an iterative process.
 
-![](https://g.gravizo.com/source/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
+![](https://g.gravizo.com/source/custom_mark3?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Ftetris%2Fdev%2FREADME.md)
 
 <details>
 <summary></summary>
-custom_mark2
+custom_mark3
     /**
      *@opt all
-     *@composed 1 Has n Purchase
+     *@composed 1 Has 2 Board
      */
-    class Basket {
-        public void purchase(Product product, float units);
-        public Collection purchases;
+    class Game {
+        public void current_state();
+        public void move_piece_left();
+        public void move_piece_right();
+        public void rotate_piece_left();
+        public void rotate_piece_right();
+        public void move_piece_down();
     }
     /**
     *@opt all
-    *@composed 1 Has 1 Product
+    *@composed 1 Has 1 Piece
     */
-    class Purchase {
-        public Product product;
-        public decimal units;
-        public decimal checkout();
-        private decimal __discount__();
-    }
-    /**
-    *@opt all
-    *@composed 1 Has 1 PromotionalOffer
-    */
-    class Product {
-        public decimal price_per_unit;
-        public PromotionalOffer promotional_offer;
+    class Board {
+        public void render();
+        public void place_piece(Piece piece);
     }
     /**
     *@opt all
     */
-    interface PromotionalOffer {
-        public decimal discount(Purchase purchase);
+    class Piece {
+        public void rotate_right();
+        public void rotate_left();
+        public void move_right();
+        public void move_left();
+        public void move_down();
+        public void rollback();
     }
-    /**
-    *@opt all
-    */
-    class HalfPriceOffer implements PromotionalOffer {}
-    /**
-    *@opt all
-    */
-    class XForThePriceOfYOffer implements PromotionalOffer {}
-    /**
-    *@opt all
-    */
-    class XForPrice implements PromotionalOffer {}
-custom_mark2
+custom_mark3
 </details>
 
 ## Dependencies
