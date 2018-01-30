@@ -13,7 +13,7 @@
 
 <p align="center"><img alt="Reader Demo" src="images/game_in_action.gif" border="1"/></p>
 
-This is a text-mode [Tetris](https://en.wikipedia.org/wiki/Tetris) game implementation in Python following the [included specifications](./specification/ProgrammingTestTetris.pdf).
+This is a text-mode [Tetris](https://en.wikipedia.org/wiki/Tetris) game implementation in Python following the [included specifications](https://github.com/marciogualtieri/tetris/blob/master/specificaton/ProgrammingTestTetris.pdf).
 
 It's my understanding that the specs are missing one action: move down.
 
